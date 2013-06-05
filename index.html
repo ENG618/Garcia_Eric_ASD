@@ -23,20 +23,97 @@
 
 	<body>
 		<div data-role="page" id="home">
+
 			<!-- Navigation Side Panel -->
 			<div data-role="panel" data-position="left" id="nav">
-				<h2>Main Nav</h2>
-			</div><!-- /Navigation side panel -->
+				<ul>
+					<li><a href="#home" data-icon="home" data-role="button" data-transition="slide">Home</a></li>
+					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">Memory</a></li>
+					<li><a href="#recentMem" data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
+					<li><a href="#aboutUs" data-icon="info" data-role="button" data-transition="slide">About</a></li>
+				</ul>
+			</div><!-- /Navigation Side Panel -->
+
 			<!-- Add Item Panel -->
 			<div data-role="panel" data-position="right" id="addItem">
 				<h2>Add Item Form</h2>
+				<!-- Form -->
+				<form action="" method="post" id="newMemForm">
+					<!-- Form Elements -->
+					<!-- Occasion -->
+					<div data-role="fieldcontain">
+						<label for="occasion">Occasion*</label>
+						<input type="text" name="occasion" id="occasion" title="The name of the event goes here" placeholder="Name of event" class="required" />
+					</div><!-- /Occasion -->
+					<!-- Date -->
+					<div data-role=fieldcontain>
+						<label for="date">Date*</label>
+						<input type="date" name="date" id="date" data-native-menu="false" />
+						<!-- <p>Date format goes here</p> -->
+					</div><!-- /Date -->
+					<!-- Important -->
+					<div data-role="fieldcontain">
+			            <label for="importance">Important</label>
+			            <select data-role="slider" name="importance" title="Was this event important?" id="importance">
+			                <option value="no">No</option>
+			                <option value="yes">Yes</option>
+			            </select>
+			        </div><!-- /Important -->
+					<!-- Mood -->
+					<div data-role="fieldcontain">
+						<label for="mood">Mood of even*</label>
+						<select name="mood" id="mood" data-native-menu="false" title="Set the mood of the event" class="required" value="">
+							<option value="">--Mood?--</option>
+							<option value="fun">Fun</option>
+							<option value="memorable">Memorable</option>
+							<option vlaue="sad">Sad</option>
+						</select>
+					</div><!-- /Mood -->
+					<!-- Shared With -->
+					<div data-role="fieldcontain">
+						<label for="sharedwith" class="select">Shared With</label>
+						<select name="sharedWith" id="sharedWith" multiple="multiple" data-native-menu="false">
+							<option>--With?--</option>
+							<optgroup label="Family">
+								<option value="Family" id="family">Family</option>
+								<option value="Significant Other" id="significantOther">Significant Other</option>
+								<option value="Self" id="self">Self</option>
+							</optgroup>
+							<optgroup label="Others">
+								<option value="Co-Workers" id="co-workers">Co-Workers</option>
+								<option value="Friends" id="friends">Friends</option>
+								<option value="Other" id="other">Other</option>
+							</optgroup>
+						</select>
+					</div><!-- /Shared With -->
+					<!-- Notes -->
+					<div data-role="fieldcontain">
+						<label for="notes">Notes</label>
+						<textarea name="notes" id="notes" placeholder="Describe this occasion here..."></textarea>
+					</div><!-- /Notes -->
+					<div data-type="fieldcontain">
+						<label for="photo">Photos</label>
+						<input type="file" name="photo" id="photo" value="">
+					</div>
+					<!-- Submit Buttons -->
+					<div data-role="fieldcontain">
+						<div><input type="submit" value="Save memory" data-icon="check" data-iconpos="right" data-theme="c"></div>
+					</div><!-- /Submit Button -->
+					<div data-role="fieldcontain">
+						<div><input type="reset" data-mini="true" value="Reset form" data-icon="delete" data-iconpos="right"></div>
+					</div><!-- /Reset Button -->
+					<a href="#addItemErrors" id="errorLink" data-rel="dialog" data-transition="pop">Errors</a>
+				</form> <!-- /Form -->
 			</div><!-- /Add Item Panel -->
+
 			<!-- Header -->
 			<div data-role="header" data-position="fixed">
-					<h1><img src="images/Memory-Vault-logo_rev1.png"></h1>
+				<a href="#nav" data-icon="bars" >Menu</a>
+				<h1><img src="images/Memory-Vault-logo_rev1.png"></h1>
+				<a href="#addItem" data-icon="plus" class="ui-btn-right" >New</a>
 			</div> <!-- /Header -->
+
 			<div data-role="content">
-				<button type="button"><a href="#nav"></a></button><a href="#addItem">Add new mem</a>
 				<!-- Feature -->
 				<div data-inset="true">
 						<a href="#addItem" data-transition="slide"><img src="images/CTA.jpg"></a>
