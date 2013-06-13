@@ -6,8 +6,8 @@
 var	sharedWith;
 var errorMsg = $('#errorLink');
 
+// Home page load complete
 $('#home').on('pageinit', function(){
-
 	// Load default data from json.js
 	$('#loadRecent').on('click', function loadDefault(){
 		for(var x in json){
@@ -15,9 +15,37 @@ $('#home').on('pageinit', function(){
 			localStorage.setItem(id, JSON.stringify(json[x]));
 		}
 		alert('Your defaults have been loaded');
-	});
-});
+	});// End Load default data from json.js
+});// Eng Home page load complete
 
+
+// Add Item page load complete
+$('#addItem').on('pageinit', function(){
+	// Save Memory to Local Storage
+	$('#saveBtn').on('click', function(key){
+		if(!key){
+			var id = Math.floor(Math.random()*123456789);
+		}else{
+			id=key;
+		}
+		var memory = {};
+		memory.occasion = ['Occasion: ', $('#occasion').val()];
+		memory.date = ['Date: ', $('#date').val()];
+		memory.importance = ['Importance: ', $('#importance').val()];
+		// memory.mood = ['Mood: ', $('#mood'), $('#mood').val()];
+		memory.sharedWithd = ['Shared With: ', $('#sharedWith').val()];
+		memory.notes = ['Notes: ', $('#notes').val()];
+		// Save data to local Storage
+		localStorage.setItem(id, JSON.stringify(memory));
+		alert('Your memory is safe!!');
+
+
+
+	});// End Save Memory to Local Storage
+});// End Add Item page load complete
+
+
+// Recent Mem page load complete
 $('#recentMem').on('pageinit', function(){
 	// Clear local storage
 	$('#clearSavedData').on('click', function clearData(){
@@ -33,14 +61,14 @@ $('#recentMem').on('pageinit', function(){
 				alert('All your memories are still safe!!');
 			}
 		}
-	});
+	});// End Clear local storage
 
 
 	// Edit individual memory
 
 	// Delete individual memory
 
-});
+});// End Recent Mem page load complete
 
 // Needed Functions:...
 
@@ -54,10 +82,6 @@ function getSharedWith () {
 	// body...
 };
 
-// Save form to local storage
-$('#saveBtn').on('click', function(){
-	// body...
-});
 
 // Load image for category selected
 
