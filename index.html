@@ -10,7 +10,7 @@
 		<meta name="discription" content="My first web app using HTML5" />
 		<meta name="keyword" content="html5, web app, Full Sail, ASD" />
 		<meta name="robots" content="index, follow" />
-		<meta name="viewport" content="width=divice-width, initial-scale=1.0"/>
+		<!-- <meta name="viewport" content="width=divice-width, initial-scale=1.0"/> -->
 		<!-- Page Title -->
 		<title>Memory Vault</title>
 		<!-- jQuery Call -->
@@ -28,84 +28,12 @@
 			<!-- Navigation Side Panel -->
 			<div data-role="panel" data-position="left" id="nav">
 				<ul>
-					<li><a href="#home" data-icon="home" data-role="button" data-transition="slide">Home</a></li>
-					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">Memory</a></li>
-					<li><a href="#recentMem" id='loadRecent' data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
+					<li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist" data-role="button" data-transition="slide">Home</a></li>
+					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">New Memory</a></li>
+					<li><a href="#recentMem" data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
 					<li><a href="#aboutUs" data-icon="info" data-role="button" data-transition="slide">About</a></li>
 				</ul>
 			</div><!-- /Navigation Side Panel -->
-
-			<!-- Add Item Panel -->
-			<div data-role="panel" data-position="right" id="addItem">
-				<h2>Add Item Form</h2>
-				<!-- Form -->
-				<form action="" method="post" id="newMemForm">
-					<!-- Form Elements -->
-					<!-- Occasion -->
-					<div data-role="fieldcontain">
-						<label for="occasion">Occasion*</label>
-						<input type="text" name="occasion" id="occasion" title="The name of the event goes here" placeholder="Name of event" class="required" />
-					</div><!-- /Occasion -->
-					<!-- Date -->
-					<div data-role=fieldcontain>
-						<label for="date">Date*</label>
-						<input type="date" name="date" id="date" data-native-menu="false" />
-						<!-- <p>Date format goes here</p> -->
-					</div><!-- /Date -->
-					<!-- Important -->
-					<div data-role="fieldcontain">
-			            <label for="importance">Important</label>
-			            <select data-role="slider" name="importance" title="Was this event important?" id="importance">
-			                <option value="no">No</option>
-			                <option value="yes">Yes</option>
-			            </select>
-			        </div><!-- /Important -->
-					<!-- Mood -->
-					<div data-role="fieldcontain">
-						<label for="mood">Mood of even*</label>
-						<select name="mood" id="mood" data-native-menu="false" title="Set the mood of the event" class="required" value="">
-							<option value="">--Mood?--</option>
-							<option value="fun">Fun</option>
-							<option value="memorable">Memorable</option>
-							<option vlaue="sad">Sad</option>
-						</select>
-					</div><!-- /Mood -->
-					<!-- Shared With -->
-					<div data-role="fieldcontain">
-						<label for="sharedwith" class="select">Shared With</label>
-						<select name="sharedWith" id="sharedWith" multiple="multiple" data-native-menu="false">
-							<option>--With?--</option>
-							<optgroup label="Family">
-								<option value="Family" id="family">Family</option>
-								<option value="Significant Other" id="significantOther">Significant Other</option>
-								<option value="Self" id="self">Self</option>
-							</optgroup>
-							<optgroup label="Others">
-								<option value="Co-Workers" id="co-workers">Co-Workers</option>
-								<option value="Friends" id="friends">Friends</option>
-								<option value="Other" id="other">Other</option>
-							</optgroup>
-						</select>
-					</div><!-- /Shared With -->
-					<!-- Notes -->
-					<div data-role="fieldcontain">
-						<label for="notes">Notes</label>
-						<textarea name="notes" id="notes" placeholder="Describe this occasion here..."></textarea>
-					</div><!-- /Notes -->
-					<div data-type="fieldcontain">
-						<label for="photo">Photos</label>
-						<input type="file" name="photo" id="photo" value="">
-					</div>
-					<!-- Submit Buttons -->
-					<div data-role="fieldcontain">
-						<div><input id='saveBtn' type="submit" value="Save memory" data-icon="check" data-iconpos="right" data-theme="c"></div>
-					</div><!-- /Submit Button -->
-					<div data-role="fieldcontain">
-						<div><input type="reset" data-mini="true" value="Reset form" data-icon="delete" data-iconpos="right"></div>
-					</div><!-- /Reset Button -->
-					<a href="#addItemErrors" id="errorLink" data-rel="dialog" data-transition="pop">Errors</a>
-				</form> <!-- /Form -->
-			</div><!-- /Add Item Panel -->
 
 			<!-- Header -->
 			<header data-role="header" data-position="fixed">
@@ -138,21 +66,28 @@
 			</sections><!-- /Content -->
 		</article><!-- /Home -->
 
+		<!-- Add Item Page -->
+		<article data-role="page" id="addItem">
 
-		<!-- Recent Memories -->
-		<article data-role="page" id="recentMem" >
 			<!-- Navigation Side Panel -->
 			<div data-role="panel" data-position="left" id="nav">
 				<ul>
 					<li><a href="#home" data-icon="home" data-role="button" data-transition="slide">Home</a></li>
-					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">Memory</a></li>
+					<li><a href="#addItem" class="ui-btn-active ui-state-persist" data-icon="plus" data-role="button" data-transition="slide">New Memory</a></li>
 					<li><a href="#recentMem" data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
 					<li><a href="#aboutUs" data-icon="info" data-role="button" data-transition="slide">About</a></li>
 				</ul>
 			</div><!-- /Navigation Side Panel -->
 
-			<!-- Add Item Panel -->
-			<div data-role="panel" data-position="right" id="addItem">
+			<!-- Header -->
+			<header data-role="header" data-position="fixed">
+				<a href="#nav" data-icon="bars" >Menu</a>
+				<h1><img src="images/Memory-Vault-logo_rev1.png"></h1>
+				<a href="#addItem" data-icon="plus" class="ui-btn-right" >New</a>
+			</header> <!-- /Header -->
+
+			<!-- Content -->
+			<section data-role='content'>
 				<h2>Add Item Form</h2>
 				<!-- Form -->
 				<form action="" method="post" id="newMemForm">
@@ -178,7 +113,7 @@
 			        </div><!-- /Important -->
 					<!-- Mood -->
 					<div data-role="fieldcontain">
-						<label for="mood">Mood of even*</label>
+						<label for="mood">Mood of event*</label>
 						<select name="mood" id="mood" data-native-menu="false" title="Set the mood of the event" class="required" value="">
 							<option value="">--Mood?--</option>
 							<option value="fun">Fun</option>
@@ -188,7 +123,7 @@
 					</div><!-- /Mood -->
 					<!-- Shared With -->
 					<div data-role="fieldcontain">
-						<label for="sharedwith" class="select">Shared With</label>
+						<label for="sharedWith" class="select">Shared With</label>
 						<select name="sharedWith" id="sharedWith" multiple="multiple" data-native-menu="false">
 							<option>--With?--</option>
 							<optgroup label="Family">
@@ -208,10 +143,11 @@
 						<label for="notes">Notes</label>
 						<textarea name="notes" id="notes" placeholder="Describe this occasion here..."></textarea>
 					</div><!-- /Notes -->
+					<!-- Photo upload -->
 					<div data-type="fieldcontain">
 						<label for="photo">Photos</label>
 						<input type="file" name="photo" id="photo" value="">
-					</div>
+					</div><!-- /Photo upload -->
 					<!-- Submit Buttons -->
 					<div data-role="fieldcontain">
 						<div><input id='saveBtn' type="submit" value="Save memory" data-icon="check" data-iconpos="right" data-theme="c"></div>
@@ -221,7 +157,22 @@
 					</div><!-- /Reset Button -->
 					<a href="#addItemErrors" id="errorLink" data-rel="dialog" data-transition="pop">Errors</a>
 				</form> <!-- /Form -->
-			</div><!-- /Add Item Panel -->
+			</section><!-- /Content -->
+		</article><!-- /Add Item Page -->
+
+
+
+		<!-- Recent Memories -->
+		<article data-role="page" id="recentMem" >
+			<!-- Navigation Side Panel -->
+			<div data-role="panel" data-position="left" id="nav">
+				<ul>
+					<li><a href="#home" data-icon="home" data-role="button" data-transition="slide">Home</a></li>
+					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">New Memory</a></li>
+					<li><a href="#recentMem" class="ui-btn-active ui-state-persist" data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
+					<li><a href="#aboutUs" data-icon="info" data-role="button" data-transition="slide">About</a></li>
+				</ul>
+			</div><!-- /Navigation Side Panel -->
 
 			<!-- Header -->
 			<header data-role="header" data-position="fixed">
@@ -276,8 +227,79 @@
 				    <a href="#recentMem" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
 				</div><!-- /Delete Individual Memory Button -->
 			</div> <!-- /Content -->
-
 		</article> <!-- /Recent Memories -->
+
+
+		<!-- About -->
+		<article data-role-"page" id="aboutUs">
+
+			<!-- Navigation Side Panel -->
+			<div data-role="panel" data-position="left" id="nav">
+				<ul>
+					<li><a href="#home" data-icon="home" data-role="button" data-transition="slide">Home</a></li>
+					<li><a href="#addItem" data-icon="plus" data-role="button" data-transition="slide">New Memory</a></li>
+					<li><a href="#recentMem" data-icon="bars" data-role="button" data-transition="slide">Recent</a></li>
+					<li><a href="#aboutUs" class="ui-btn-active ui-state-persist" data-icon="info" data-role="button" data-transition="slide">About</a></li>
+				</ul>
+			</div><!-- /Navigation Side Panel -->
+
+			<!-- Header -->
+			<header data-role="header" data-position="fixed">
+				<a href="#nav" data-icon="bars" >Menu</a>
+				<h1><img src="images/Memory-Vault-logo_rev1.png"></h1>
+				<a href="#addItem" data-icon="plus" class="ui-btn-right" >New</a>
+			</header> <!-- /Header -->
+
+			<!-- Content -->
+			<section data-role="content">
+				<ul data-role="listview" data-inset="true">
+				    <li><a href="https://eng618.github.com/Garcia_Eric_MIU/Bronze" data-ajax='false'>Bronze gh-pages</a></li>
+				    <li><a href="https://eng618.github.com/Garcia_Eric_MIU/Gold" data-ajax='false'>Gold gh-pages</a></li>
+				    <li><a href="https://github.com/ENG618/Garcia_Eric_MIU" data-ajax='false'>Git Repo</a></li>
+				    <li><a href="http://eng618.github.io/Garcia_Eric_MIU/Gold/" data-ajax='false'>Gold App</a></li>
+				</ul>
+				<!-- Collapsible Set -->
+				<div data-role="collapsible-set">
+					
+					<!-- About Author -->
+					<div data-role="collapsible" data-theme="b" data-content-theme="c" >
+					    <h2>Find me on</h2>
+					    <ul data-role="listview">
+					        <li><a href="https://plus.google.com/u/0/117454855184907306981/posts" data-ajax='false'>Google+</a></li>
+						    <li><a href="https://www.facebook.com/garciaericn" data-ajax='false'>Facebook</a></li>
+							<li><a href="https://twitter.com/NexusGenMods" data-ajax='false'>Twiter</a></li>
+					    </ul>
+					</div> <!-- /About Author -->
+
+					<!-- Credits -->
+					<div data-role="collapsible" data-theme="b" data-content-theme="c">
+					    <h2>Credits</h2>
+					    <ul data-role="listview">
+					        <li><a href="http://www.lynda.com/tutorial/100222?org=fullsail.edu" data-ajax='false'>Git Training</a></li>
+						    <li><a href="http://www.lynda.com/tutorial/81266?org=fullsail.edu" data-ajax='false'>js Training</a></li>
+							<li><a href="http://view.jquerymobile.com/1.3.1/dist/demos/" data-ajax='false'>jQuery Mobile</a></li>
+					    </ul>
+					</div> <!-- /Credits -->
+				</div><!-- /Collapsible Set -->
+			</section> <!-- /Content -->
+		</article> <!-- /About -->
+
+		<!-- Error Page -->
+		<article data-role="dialog" id="addItemErrors">
+			<!-- Header -->
+			<header data-role="header" data-position="fixed">
+				<h1>Errors</h1>
+			</header> <!-- /Header -->
+			<!-- Content -->
+			<section data-role="content">
+				<ul>
+					<li>Occasion</li>
+					<li>Date</li>
+					<li>Mood of Event</li>
+				</ul>
+			</section> <!-- /Content -->
+		</article> <!-- /Error Page -->
+
 
 
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
