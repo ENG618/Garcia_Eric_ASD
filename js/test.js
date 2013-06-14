@@ -1,5 +1,5 @@
-$ajax({
-	url:'data.json',
+$.ajax({
+	url:'js/data.json',
 	type:'GET',
 	dataType:'json',
 	success:function(data, status) {
