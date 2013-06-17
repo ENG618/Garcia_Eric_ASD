@@ -9,8 +9,8 @@ var errorMsg = $('#errorLink');
 
 // Home page load complete
 $('#home').on('pageinit', function(){
-	
-});// Eng Home page load complete
+
+});// End Home page script
 
 
 // Add Item page load complete
@@ -19,8 +19,9 @@ $('#addItem').on('pageinit', function(){
 	// Save Memory to Local Storage
 	$('#saveBtn').on('click', function(x, key){
 		console.log(key);
+		var id;
 		if(!key){
-			var id = Math.floor(Math.random()*123456789);
+			id = Math.floor(Math.random()*123456789);
 		}else{
 			id=key;
 		}
@@ -40,7 +41,7 @@ $('#addItem').on('pageinit', function(){
 
 
 	});// End Save Memory to Local Storage
-});// End Add Item page load complete
+});// End Add Item page script
 
 
 // Recent Mem page load complete
@@ -53,7 +54,7 @@ $('#recentMem').on('pageinit', function(){
 			localStorage.setItem(id, JSON.stringify(json[x]));
 		}
 		alert('Your defaults have been loaded');
-	};// End Load default data from json.js
+	}// End Load default data from json.js
 
 	// Load Data Function
 
@@ -111,14 +112,14 @@ $('#recentMem').on('pageinit', function(){
 
 	// loadData();
 
-});// End Recent Mem page load complete
+});// End Recent Mem page script
 
 // Needed Functions:...
 
 // Load default json data
 function loadDefault () {
 	// body...
-};
+}
 
 // Load image for category selected
 
