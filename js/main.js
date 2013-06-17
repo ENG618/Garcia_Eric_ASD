@@ -57,6 +57,41 @@ $('#recentMem').on('pageinit', function(){
 	}// End Load default data from json.js
 
 	// Load Data Function
+	function loadData(){
+		if(localStorage.length === 0){
+			alert('There are no memories to display');
+			loadDefault();
+		// }else{
+			// Load from local storage
+	// 		var makeDiv = document.createElement('div');
+	// 		makeDiv.setAttribute('id', 'memories');
+	// 		var makeList = document.createElement('ul');
+	// 		makeDiv.appendChild(makeList);
+	// 		document.body.appendChild(makeDiv);
+	// 		$('memories').style.display = 'block';
+	// 		for (var i=0; i<localStorage.length; i++){
+	// 			var makeLi = document.createElement('li');
+	// 			var linksLi = document.createElement('li');
+	// 			makeList.appendChild(makeLi);
+	// 			var key = localStorage.key(i);
+	// 			var value = localStorage.getItem(key);
+	// 			// Convert sting from local storage to object
+	// 			var obj = JSON.parse(value);
+	// 			// Creating another list for each memory
+	// 			var makeSubList = document.createElement('ul');
+	// 			makeLi.appendChild(makeSubList);
+	// 			loadImg(makeSubList, obj.eventMood[1]);
+	// 			for (var n in obj){
+	// 				var makeSubLi = document.createElement('li');
+	// 				makeSubList.appendChild(makeSubLi);
+	// 				var optSubText = obj[n][0]+' '+obj[n][1];
+	// 				makeSubLi.innerHTML = optSubText;
+	// 				makeSubList.appendChild(linksLi);
+	// 			}
+	// 			makeItemLinks(localStorage.key(i), linksLi);
+	// 		}
+	// 	}
+	// }
 
 	// Load JSON
 	$('#loadJSON').on('click', function(){
@@ -110,16 +145,11 @@ $('#recentMem').on('pageinit', function(){
 
 	// Delete individual memory
 
-	// loadData();
+	loadData();
 
 });// End Recent Mem page script
 
 // Needed Functions:...
-
-// Load default json data
-function loadDefault () {
-	// body...
-}
 
 // Load image for category selected
 

@@ -1,8 +1,4 @@
-//Eric Garcia
-//ASD 1306
-//Project 4
-
-var json = {
+{
 	'memory1': {
 		'occasion': ['Occasion: ', 'Wedding'],
 		'date': ['Date: ', '2010-08-21'],
