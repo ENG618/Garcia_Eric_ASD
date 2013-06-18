@@ -4,20 +4,20 @@
 
 //Variables
 var	sharedWith;
-var errorMsg = $('#errorLink');
+var errorMsg = $("#errorLink");
 
 
 // Home page load complete
-$('#home').on('pageinit', function(){
+$("#home").on("pageinit", function(){
 
 });// End Home page script
 
 
 // Add Item page load complete
-$('#addItem').on('pageinit', function(){
+$("#addItem").on("pageinit", function(){
 
 	// Save Memory to Local Storage
-	$('#saveBtn').on('click', function(x, key){
+	$("#saveBtn").on("click", function(x, key){
 		console.log(key);
 		var id;
 		if(!key){
@@ -28,15 +28,15 @@ $('#addItem').on('pageinit', function(){
 
 		console.log(id);
 		var memory = {};
-		memory.occasion = ['Occasion: ', $('#occasion').val()];
-		memory.date = ['Date: ', $('#date').val()];
-		memory.importance = ['Importance: ', $('#importance').val()];
-		// memory.mood = ['Mood: ', $('#mood'), $('#mood').val()];
-		// memory.sharedWithd = ['Shared With: ', getCheckedValues()];
-		memory.notes = ['Notes: ', $('#notes').val()];
+		memory.occasion = ["Occasion: ", $("#occasion").val()];
+		memory.date = ["Date: ", $("#date").val()];
+		memory.importance = ["Importance: ", $("#importance").val()];
+		// memory.mood = ["Mood: ", $("#mood"), $("#mood").val()];
+		// memory.sharedWithd = ["Shared With: ", getCheckedValues()];
+		memory.notes = ["Notes: ", $("#notes").val()];
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
-		alert('Your memory is safe!!');
+		alert("Your memory is safe!!");
 
 
 
@@ -45,46 +45,46 @@ $('#addItem').on('pageinit', function(){
 
 
 // Recent Mem page load complete
-$('#recentMem').on('pageinit', function(){
+$("#recentMem").on("pageinit", function(){
 
 	// Load default data from json.js
-	function loadDefault(){
+	$("#loadLocal").on("click", function loadDefault(){
 		for(var x in json){
 			var id	= Math.floor(Math.random()*12345678);
 			localStorage.setItem(id, JSON.stringify(json[x]));
 		}
-		alert('Your defaults have been loaded');
-	}// End Load default data from json.js
+		alert("Your defaults have been loaded");
+	});// End Load default data from json.js
 
 	// Load Data Function
 	function loadData(){
 		if(localStorage.length === 0){
-			alert('There are no memories to display');
+			alert("There are no memories to display");
 			loadDefault();
 		// }else{
 			// Load from local storage
-	// 		var makeDiv = document.createElement('div');
-	// 		makeDiv.setAttribute('id', 'memories');
-	// 		var makeList = document.createElement('ul');
+	// 		var makeDiv = document.createElement("div");
+	// 		makeDiv.setAttribute("id", "memories");
+	// 		var makeList = document.createElement("ul");
 	// 		makeDiv.appendChild(makeList);
 	// 		document.body.appendChild(makeDiv);
-	// 		$('memories').style.display = 'block';
+	// 		$("memories").style.display = "block";
 	// 		for (var i=0; i<localStorage.length; i++){
-	// 			var makeLi = document.createElement('li');
-	// 			var linksLi = document.createElement('li');
+	// 			var makeLi = document.createElement("li");
+	// 			var linksLi = document.createElement("li");
 	// 			makeList.appendChild(makeLi);
 	// 			var key = localStorage.key(i);
 	// 			var value = localStorage.getItem(key);
 	// 			// Convert sting from local storage to object
 	// 			var obj = JSON.parse(value);
 	// 			// Creating another list for each memory
-	// 			var makeSubList = document.createElement('ul');
+	// 			var makeSubList = document.createElement("ul");
 	// 			makeLi.appendChild(makeSubList);
 	// 			loadImg(makeSubList, obj.eventMood[1]);
 	// 			for (var n in obj){
-	// 				var makeSubLi = document.createElement('li');
+	// 				var makeSubLi = document.createElement("li");
 	// 				makeSubList.appendChild(makeSubLi);
-	// 				var optSubText = obj[n][0]+' '+obj[n][1];
+	// 				var optSubText = obj[n][0]+" "+obj[n][1];
 	// 				makeSubLi.innerHTML = optSubText;
 	// 				makeSubList.appendChild(linksLi);
 	// 			}
@@ -94,11 +94,11 @@ $('#recentMem').on('pageinit', function(){
 	}
 
 	// Load JSON
-	$('#loadJSON').on('click', function(){
+	$("#loadJSON").on("click", function(){
 		$.ajax({
-			url:'js/data.json',
-			type:'GET',
-			dataType:'json',
+			url:"xhr/data.json",
+			type:"GET",
+			dataType:"json",
 			success:function(data) {
 				console.log(data);
 			},
@@ -109,13 +109,13 @@ $('#recentMem').on('pageinit', function(){
 	});
 
 	// Load XML
-	$('#loadXML').on('click', function(){
+	$("#loadXML").on("click", function(){
 		$.ajax({
-			url:'js/data.xml',
-			type:'GET',
-			dataType:'xml',
-			success:function(data) {
-				console.log(data);
+			url:"xhr/data.xml",
+			type:"GET",
+			dataType:"xml",
+			success:function(data, status) {
+				console.log(status, data);
 			},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
@@ -124,17 +124,17 @@ $('#recentMem').on('pageinit', function(){
 	});
 
 	// Clear local storage
-	$('#clearSavedData').on('click', function clearData(){
+	$("#clearSavedData").on("click", function clearData(){
 		if(localStorage.length === 0){
-			alert('There are no memories to clear');
+			alert("There are no memories to clear");
 		}else{
-			var ask = confirm('This will cause you to forget all memories...Are you sure you want to do this?');
+			var ask = confirm("This will cause you to forget all memories...Are you sure you want to do this?");
 			if(ask){
 			localStorage.clear();
-			alert('All memories have been forgotten');
+			alert("All memories have been forgotten");
 			return false;
 			}else{
-				alert('All your memories are still safe!!');
+				alert("All your memories are still safe!!");
 			}
 		}
 	});// End Clear local storage
