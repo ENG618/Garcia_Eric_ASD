@@ -1,6 +1,6 @@
 // Eric Garcia
 // 1306 SDI
-// Project 2
+// Project 3
 
 //Variables
 var	sharedWith;
@@ -90,8 +90,8 @@ $('#recentMem').on('pageinit', function(){
 	// 			}
 	// 			makeItemLinks(localStorage.key(i), linksLi);
 	// 		}
-	// 	}
-	// }
+		}
+	}
 
 	// Load JSON
 	$('#loadJSON').on('click', function(){
@@ -100,13 +100,14 @@ $('#recentMem').on('pageinit', function(){
 			type:'GET',
 			dataType:'json',
 			success:function(data) {
-				console.log=(data);
+				console.log(data);
 			},
 			error: function(error, parseerror) {
-				console.log=(error, parseerror);
+				console.log(error, parseerror);
 			}
 		});
 	});
+
 	// Load XML
 	$('#loadXML').on('click', function(){
 		$.ajax({
@@ -114,15 +115,13 @@ $('#recentMem').on('pageinit', function(){
 			type:'GET',
 			dataType:'xml',
 			success:function(data) {
-				console.log=(data);
+				console.log(data);
 			},
 			error: function(error, parseerror) {
-				console.log=(error, parseerror);
+				console.log(error, parseerror);
 			}
 		});
 	});
-
-
 
 	// Clear local storage
 	$('#clearSavedData').on('click', function clearData(){
@@ -139,7 +138,6 @@ $('#recentMem').on('pageinit', function(){
 			}
 		}
 	});// End Clear local storage
-
 
 	// Edit individual memory
 
