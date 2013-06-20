@@ -111,7 +111,7 @@ $("#recentMem").on("pageinit", function(){
 			}
 				for(var n in x)
 					$('<li>' + n + '</li>')
-					.HTML("id" + x)
+					.html("#" + x)
 					.slideDown();
 		},
 			error: function(error, parseerror) {
