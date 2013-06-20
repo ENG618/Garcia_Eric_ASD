@@ -25,7 +25,6 @@ $("#addItem").on("pageinit", function(){
 		}else{
 			id=key;
 		}
-
 		console.log(id);
 		var memory = {};
 		memory.occasion = ["Occasion: ", $("#occasion").val()];
@@ -37,32 +36,35 @@ $("#addItem").on("pageinit", function(){
 		// Save data to local Storage
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert("Your memory is safe!!");
-
-
-
 	});// End Save Memory to Local Storage
+
 });// End Add Item page script
 
 
 // Recent Mem page load complete
 $("#recentMem").on("pageinit", function(){
 
-	// Load default data from json.js
-	$("#loadLocal").on("click", function loadDefault(){
+	// Load default data from json
+	var loadDefault = function(){
 		for(var x in json){
 			var id	= Math.floor(Math.random()*12345678);
 			localStorage.setItem(id, JSON.stringify(json[x]));
 		}
 		alert("Your defaults have been loaded");
-	});// End Load default data from json.js
+	};// End Load default data from json.js
 
 	// Load Data Function
-	function loadData(){
+	$("#loadLocal").on("click", function loadData(){
 		if(localStorage.length === 0){
 			alert("There are no memories to display");
 			loadDefault();
-		// }else{
+		}else{
 			// Load from local storage
+			$('<li><a href="#addItem" data-transition="slide" data-icon="edit">test</li>')
+				.appendTo('#recentMemList')
+				.slideDown()
+			;
+
 	// 		var makeDiv = document.createElement("div");
 	// 		makeDiv.setAttribute("id", "memories");
 	// 		var makeList = document.createElement("ul");
@@ -89,9 +91,9 @@ $("#recentMem").on("pageinit", function(){
 	// 				makeSubList.appendChild(linksLi);
 	// 			}
 	// 			makeItemLinks(localStorage.key(i), linksLi);
-	// 		}
+	//		}
 		}
-	}
+});
 
 	// Load JSON
 	$("#loadJSON").on("click", function(){
@@ -143,16 +145,15 @@ $("#recentMem").on("pageinit", function(){
 
 	// Delete individual memory
 
-	loadData();
+	loadDefault();
 
 });// End Recent Mem page script
+
+
+
 
 // Needed Functions:...
 
 // Load image for category selected
-
-// Load data from local storage
-
-
 
 
