@@ -103,7 +103,13 @@ $("#recentMem").on("pageinit", function(){
 			dataType:"json",
 			success:function(data) {
 				console.log(data);
-			},
+
+			for(var x in data){
+				$('<li>' + x + '</li>')
+				.appendTo('#recentMemList')
+				.slideDown();
+			}
+		},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
 			}
