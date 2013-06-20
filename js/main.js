@@ -105,11 +105,13 @@ $("#recentMem").on("pageinit", function(){
 				console.log(data);
 
 			for(var x in data){
+				console.log(x);
 				$('<ul id="' + x + '" ></ul>')
 				.appendTo('#recentMemList')
 				.slideDown();
 			}
 				for(var n in x)
+					console.log(n);
 					$('<li>' + n + '</li>')
 					.html("#" + x)
 					.slideDown();
