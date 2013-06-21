@@ -112,21 +112,22 @@ $("#recentMem").on("pageinit", function(){
 			dataType:"json",
 			success:function(data) {
 				console.log(data);
-				for(var x in data){
-					console.log(x);
-					var mainList = $('#recentMemList');
 
-					mainList
-					.append('<ul>')
-					.text(x);
-				}
-				for(var n in x){
+			for(var x in data){
+				console.log(x);
+				var mainList = $('#recentMemList');
+
+				$('<ul id="' + x + '" ></ul>')
+				.appendTo('#recentMemList')
+				.animate(1500);
+			}
+				for(var n in x)
+					console.log(n[0] + n[1]);
 					$('<li>' + n[0] + n[1] + '</li>')
 					.html('#' + x)
 					.slideDown();
 					console.log('Test');
-				}
-			},
+		},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
 			}

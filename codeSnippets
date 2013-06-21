@@ -1,0 +1,40 @@
+
+
+<!-- List of Memories -->
+<ul data-role="listview" data-split-icon="delete" id="recentMemList" data-inset="true" data-filter="true" data-filter-placeholder="Search memories...">
+    <li><a href="#addItem" data-transition="slide" data-icon="edit">
+        <img src="images/Fun.png">
+        <h2>Started School</h2>
+        <p>October 25, 2012</p>
+        <p>MDVBS is awesome!!</p></a>
+        <a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>
+    </li>
+    <li><a href="#addItem" data-transition="slide">
+        <img src="images/Memorable.png">
+        <h2>Noah was born</h2>
+        <p>December 20, 2011</p>
+        <p>Life changing</p></a>
+        <a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>
+    </li>
+    <li><a href="#addItem" data-transition="slide">
+        <img src="images/Fun.png">
+        <h2>Graduated High School</h2>
+        <p>May 24, 2005</p>
+        <p>Had a blast!!!!!!</p></a>
+        <a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>
+    </li>
+    <li><a href="#addItem" data-transition="slide">
+        <img src="images/Sad.png">
+        <h2>September 11th</h2>
+        <p>September 11, 2001</p>
+        <p>Unbelievable tragedy</p></a>
+        <a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>
+    </li>
+</ul><!-- /List of Memories -->
+<!-- Delete Individual Memory Button -->
+<div data-role="popup" id="deleteMem" data-theme="b" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+    <h3>Delete Memory?</h3>
+    <p>This will completely remove this memory?</p>
+    <a href="#recentMem" data-role="button" data-rel="back" id="popDelete" data-theme="a" data-icon="delete" data-inline="true" data-mini="true">Delete Memory</a>
+    <a href="#recentMem" data-role="button" data-rel="back" data-inline="true" data-mini="true">Cancel</a>
+</div><!-- /Delete Individual Memory Button -->
