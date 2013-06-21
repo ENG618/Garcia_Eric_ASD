@@ -132,12 +132,12 @@ var json = {
 		"notes": ["Notes: ", "Boo hoo"]
 	},
 	"memory17": {
-		"occasion": ["Occasion: ", "Creating all this "JSON""],
+		"occasion": ["Occasion: ", "Creating all this 'JSON'"],
 		"date": ["Date: ", "2013-05-07"],
 		"importance": ["Importance: ", "100"],
 		"eventMood": ["Mood: ", "Sad"],
 		"including": ["Shared With: ", ["Self"]],
-		"notes": ["Notes: ", "It\" hard coming up with all this data"]
+		"notes": ["Notes: ", "It's hard coming up with all this data"]
 	},
 	"memory18": {
 		"occasion": ["Occasion: ", "Installed water softner"],
