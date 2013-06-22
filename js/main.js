@@ -112,14 +112,12 @@ $("#recentMem").on("pageinit", function(){
 			dataType:"json",
 			success:function(data) {
 				console.log(data);
-				for(var x in data){
-					console.log(x);
-					$.each(data, function(i, memory){
-						$('#recentMemList').append(
-							$('<ul>')
-						);
-					});
-				}
+				console.log(x);
+				$.each(data, function(i, memory){
+					$('#recentMemList').append(
+						$('<ul>')
+					);
+				});
 			},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
