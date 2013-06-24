@@ -1,6 +1,6 @@
 // Eric Garcia
 // 1306 SDI
-// Project 3
+// Project 4
 
 //Variables
 var	sharedWith;
@@ -19,10 +19,8 @@ var loadDefault = function(){
 };// End Load default data from json.js
 
 
-
 // Home page load complete
 $("#home").on("pageinit", function(){
-
 });// End Home page script
 
 
@@ -50,59 +48,73 @@ $("#addItem").on("pageinit", function(){
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert("Your memory is safe!!");
 	});// End Save Memory to Local Storage
-
 });// End Add Item page script
 
 
 // Recent Mem page load complete
 $("#recentMem").on("pageinit", function(){
 
+	if(localStorage.length === 0){
+		alert('There are no memories to display');
+		loadDefault();
+			// Load from local storage
+			console.log(localStorage.length);
+			for (var i=0; i<localStorage.length; i++){
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+				// Convert sting from local storage to object
+				var obj = JSON.parse(value);
+				console.log(obj.occasion);
+				// $('<li><a href="#addItem" data-transition="slide" data-icon="edit"></li>')
+
+				$(	'<li>' +
+						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+							'<h2>' + obj.occasion + '</h2>' +
+							'<p>' + obj.date + '</p>' +
+							'<p>' + obj.importance + '</p>' +
+							'<p>' + obj.notes + '</p></a>' +
+	        			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' + 
+	        		'</li>')
+
+					.appendTo('#recentMemList')
+					.slideDown()
+				;
+			}
+		}
+
 	// Load Data Function
 	$("#loadLocal").on("click", function loadData(){
 		if(localStorage.length === 0){
 			console.log('The local storage is equal to 0');
 			alert("There are no memories to display");
-			loadDefault();
+			// loadDefault();
 		}else{
 			// Load from local storage
 			console.log(localStorage.length);
 			for (var i=0; i<localStorage.length; i++){
-			$('<li><a href="#addItem" data-transition="slide" data-icon="edit">test</li>')
-				.appendTo('#recentMemList')
-				.slideDown()
-			;
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+				// Convert sting from local storage to object
+				var obj = JSON.parse(value);
+				console.log(obj.occasion);
+				// $('<li><a href="#addItem" data-transition="slide" data-icon="edit"></li>')
+
+				$(	'<li>' +
+						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+							'<h2>' + obj.occasion + '</h2>' +
+							'<p>' + obj.date + '</p>' +
+							'<p>' + obj.importance + '</p>' +
+							'<p>' + obj.notes + '</p></a>' +
+	        			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' + 
+	        		'</li>')
+
+					.appendTo('#recentMemList')
+					.slideDown()
+				;
 			}
-
-
-	// 		var makeDiv = document.createElement("div");
-	// 		makeDiv.setAttribute("id", "memories");
-	// 		var makeList = document.createElement("ul");
-	// 		makeDiv.appendChild(makeList);
-	// 		document.body.appendChild(makeDiv);
-	// 		$("memories").style.display = "block";
-	// 		for (var i=0; i<localStorage.length; i++){
-	// 			var makeLi = document.createElement("li");
-	// 			var linksLi = document.createElement("li");
-	// 			makeList.appendChild(makeLi);
-	// 			var key = localStorage.key(i);
-	// 			var value = localStorage.getItem(key);
-	// 			// Convert sting from local storage to object
-	// 			var obj = JSON.parse(value);
-	// 			// Creating another list for each memory
-	// 			var makeSubList = document.createElement("ul");
-	// 			makeLi.appendChild(makeSubList);
-	// 			loadImg(makeSubList, obj.eventMood[1]);
-	// 			for (var n in obj){
-	// 				var makeSubLi = document.createElement("li");
-	// 				makeSubList.appendChild(makeSubLi);
-	// 				var optSubText = obj[n][0]+" "+obj[n][1];
-	// 				makeSubLi.innerHTML = optSubText;
-	// 				makeSubList.appendChild(linksLi);
-	// 			}
-	// 			makeItemLinks(localStorage.key(i), linksLi);
-	//		}
 		}
-});
+	});
+
 
 	// Load JSON
 	$("#loadJSON").on("click", function(){
@@ -160,8 +172,12 @@ $("#recentMem").on("pageinit", function(){
 	// Edit individual memory
 
 	// Delete individual memory
+	$('#popDelete').on('click', function(){
+		localStorage.removeItem(this.key);
+		alert('Memory has been forgotten');
+	});
 
-	loadDefault();
+	// loadDefault();
 
 });// End Recent Mem page script
 
