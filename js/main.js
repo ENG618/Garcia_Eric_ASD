@@ -18,6 +18,28 @@ var loadDefault = function(){
 	alert("Your defaults have been loaded");
 };// End Load default data from json.js
 
+// Loops data a prints it to screen
+var dataLoop = function (source) {
+	for (var i=0; i<source.length; i++){
+		var key = source.key(i);
+		var value = source.getItem(key);
+		// Convert sting from local storage to object
+		var obj = JSON.parse(value);
+		console.log(obj.occasion);
+		$(	'<li>' +
+			'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+			'<h2>' + obj.occasion + '</h2>' +
+			'<p>' + obj.date + '</p>' +
+			'<p>' + obj.importance + '</p>' +
+			'<p>' + obj.notes + '</p></a>' +
+			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+			'</li>')
+		.appendTo('#recentMemList')
+		.slideDown()
+		;
+	}// End for loop
+};// End dataLoop
+
 
 // Home page load complete
 $("#home").on("pageinit", function(){
@@ -54,32 +76,12 @@ $("#addItem").on("pageinit", function(){
 // Recent Mem page load complete
 $("#recentMem").on("pageinit", function(){
 
+	// Loading default data
 	if(localStorage.length === 0){
 		alert('There are no memories to display');
 		loadDefault();
 			// Load from local storage
-			console.log(localStorage.length);
-			for (var i=0; i<localStorage.length; i++){
-				var key = localStorage.key(i);
-				var value = localStorage.getItem(key);
-				// Convert sting from local storage to object
-				var obj = JSON.parse(value);
-				console.log(obj.occasion);
-				// $('<li><a href="#addItem" data-transition="slide" data-icon="edit"></li>')
-
-				$(	'<li>' +
-						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
-							'<h2>' + obj.occasion + '</h2>' +
-							'<p>' + obj.date + '</p>' +
-							'<p>' + obj.importance + '</p>' +
-							'<p>' + obj.notes + '</p></a>' +
-	        			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' + 
-	        		'</li>')
-
-					.appendTo('#recentMemList')
-					.slideDown()
-				;
-			}
+			dataLoop(localStorage);
 		}
 
 	// Load Data Function
@@ -97,8 +99,6 @@ $("#recentMem").on("pageinit", function(){
 				// Convert sting from local storage to object
 				var obj = JSON.parse(value);
 				console.log(obj.occasion);
-				// $('<li><a href="#addItem" data-transition="slide" data-icon="edit"></li>')
-
 				$(	'<li>' +
 						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
 							'<h2>' + obj.occasion + '</h2>' +
@@ -107,14 +107,12 @@ $("#recentMem").on("pageinit", function(){
 							'<p>' + obj.notes + '</p></a>' +
 	        			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' + 
 	        		'</li>')
-
 					.appendTo('#recentMemList')
 					.slideDown()
 				;
 			}
 		}
 	});
-
 
 	// Load JSON
 	$("#loadJSON").on("click", function(){
@@ -124,11 +122,20 @@ $("#recentMem").on("pageinit", function(){
 			dataType:"json",
 			success:function(data) {
 				console.log(data);
-				console.log(x);
 				$.each(data, function(i, memory){
-					$('#recentMemList').append(
-						$('<ul>')
-					);
+					console.log(memory);
+					console.log(memory.occasion);
+					$(	'<li>' +
+						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+						'<h2>' + memory.occasion + '</h2>' +
+						'<p>Date: ' + memory.date + '</p>' +
+						'<p>Important: ' + memory.importance + '</p>' +
+						'<p>Notes: ' + memory.notes + '</p></a>' +
+						'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+						'</li>')
+						.appendTo('#recentMemList')
+						.slideDown()
+					;
 				});
 			},
 			error: function(error, parseerror) {
@@ -146,11 +153,37 @@ $("#recentMem").on("pageinit", function(){
 			success:function(data, status) {
 				console.log(status, data);
 				$.parseXML(data);
+				console.log(data);
+				$.each(data, function(i, memory){
+					console.log(memory);
+					console.log(memory.occasion);
+					// $(	'<li>' +
+					// 	'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+					// 	'<h2>' + memory.occasion + '</h2>' +
+					// 	'<p>Date: ' + memory.date + '</p>' +
+					// 	'<p>Important: ' + memory.importance + '</p>' +
+					// 	'<p>Notes: ' + memory.notes + '</p></a>' +
+					// 	'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+					// 	'</li>')
+					// 	.appendTo('#recentMemList')
+					// 	.slideDown()
+					// ;
+				});
 			},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
 			}
 		});
+	});
+
+
+	// Edit individual memory
+
+
+	// Delete individual memory
+	$('#popDelete').on('click', function(){
+		localStorage.removeItem(this.key);
+		alert('Memory has been forgotten');
 	});
 
 	// Clear local storage
@@ -168,16 +201,6 @@ $("#recentMem").on("pageinit", function(){
 			}
 		}
 	});// End Clear local storage
-
-	// Edit individual memory
-
-	// Delete individual memory
-	$('#popDelete').on('click', function(){
-		localStorage.removeItem(this.key);
-		alert('Memory has been forgotten');
-	});
-
-	// loadDefault();
 
 });// End Recent Mem page script
 

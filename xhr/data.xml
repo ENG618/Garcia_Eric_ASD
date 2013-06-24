@@ -5,35 +5,31 @@
 		<occasion>Wedding</occasion>
 		<date>2010-08-21</date>
 		<importance>yes</importance>
-		<evantMood>Memorable</evantMood>
 		<notes>What an amazing event</notes>
 	</memory1>
 
 	<memory2>
 		<occasion>Noah was born</occasion>
 		<date>2011-12-20</date>
-		<eventMood>Memorable</eventMood>
+		<importance>yes</importance>
 		<notes>Life changing</notes>
 	</memory2>
 	<memory3>
 		<occasion>Bought house</occasion>
 		<date>2013-02-07</date>
 		<importance>yes</importance>
-		<eventMood>Memorable</eventMood>
 		<notes>What an amazing even</notes>
 	</memory3>
 	<memory4>
 		<occasion>Bought car</occasion>
 		<date>2010-04-17</date>
 		<importance>yes</importance>
-		<eventMood>Memorable</eventMood>
 		<notes>1997 Jeep Wrangler</notes>
 	</memory4>
 	<memory5>
 		<occasion>Bought dog</occasion>
 		<date>2011-02-10</date>
 		<importance>no</importance>
-		<evaneMood>Memorable</evaneMood>
 		<notes>Love my Lab</notes>
 	</memory5>
 </memories>

@@ -1,0 +1,142 @@
+{
+  "memory1": {
+    "occasion": "Wedding",
+    "date": "2010-08-21",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "What an amazing event"
+  },
+  "memory2": {
+    "occasion": "Noah was born",
+    "date": "2011-12-20",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "Life changing"
+  },
+  "memory3": {
+    "occasion": "Bought house",
+    "date": "2013-02-07",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "What an amazing event"
+  },
+  "memory4": {
+    "occasion": "Bought car",
+    "date": "2010-04-17",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "1997 Jeep Wrangler"
+  },
+  "memory5": {
+    "occasion": "Bought dog",
+    "date": "2011-02-10",
+    "importance": "no",
+    "eventMood": "Memorable",
+    "notes": "Love my Lab"
+  },
+  "memory6": {
+    "occasion": "Went to Disney",
+    "date": "2013-03-12",
+    "importance": "no",
+    "eventMood": "Memorable",
+    "notes": "Doesn\"t get any better than this"
+  },
+  "memory7": {
+    "occasion": "Started School",
+    "date": "2012-09-05",
+    "importance": "yes",
+    "eventMood": "Fun",
+    "notes": "MDVBS is awesome!!"
+  },
+  "memory8": {
+    "occasion": "Wife Graduated",
+    "date": "2010-05-01",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "BSN from UCF"
+  },
+  "memory9": {
+    "occasion": "Key West Vacation",
+    "date": "2011-08-21",
+    "importance": "yes",
+    "eventMood": "Fun",
+    "notes": "Party city...what a time!!"
+  },
+  "memory10": {
+    "occasion": "Perto Rico Vacation",
+    "date": "2013-04-01",
+    "importance": "yes",
+    "eventMood": "Fun",
+    "notes": "What an amazing event"
+  },
+  "memory11": {
+    "occasion": "25th Birthday",
+    "date": "2012-06-18",
+    "importance": "yes",
+    "eventMood": "Fun",
+    "notes": "Don\"t remember much but that makes it all the better!"
+  },
+  "memory12": {
+    "occasion": "Mom\"s Birthday",
+    "date": "2013-05-04",
+    "importance": "no",
+    "eventMood": "Fun",
+    "notes": "Had a little shin-dig at the mother-in-law\"s"
+  },
+  "memory13": {
+    "occasion": "Some sad event :(",
+    "date": "2008-02-04",
+    "importance": "no",
+    "eventMood": "Sad",
+    "notes": "Sad times are the worst."
+  },
+  "memory14": {
+    "occasion": "Graduated High School",
+    "date": "2005-05-10",
+    "importance": "yes",
+    "eventMood": "Memorable",
+    "notes": "Life begins now."
+  },
+  "memory15": {
+    "occasion": "Date Night",
+    "date": "2013-05-04",
+    "importance": "no",
+    "eventMood": "Fun",
+    "notes": "Love datenights ;)"
+  },
+  "memory16": {
+    "occasion": "Another sad day",
+    "date": "2012-12-13",
+    "importance": "no",
+    "eventMood": "Sad",
+    "notes": "Boo hoo"
+  },
+  "memory17": {
+    "occasion": "Creating all this 'JSON'",
+    "date": "2013-05-07",
+    "importance": "no",
+    "eventMood": "Sad",
+    "notes": "It's hard coming up with all this data"
+  },
+  "memory18": {
+    "occasion": "Installed water softner",
+    "date": "2013-05-03",
+    "importance": "yes",
+    "eventMood": "Sad",
+    "notes": "Was a pain, but it feels so good to have clean soft water"
+  },
+  "memory19": {
+    "occasion": "Noah got sick",
+    "date": "2012-12-17",
+    "importance": "no",
+    "eventMood": "Sad",
+    "notes": "Long nights awake."
+  },
+  "memory20": {
+    "occasion": "Edit me",
+    "date": "2013-04-30",
+    "importance": "no",
+    "eventMood": "Sad",
+    "notes": "What an amazing event"
+  }
+}

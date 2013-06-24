@@ -1,6 +1,6 @@
 // Eric Garcia
 // 1306 SDI
-// Project 3
+// Project 4
 
 //Variables
 var	sharedWith;
@@ -18,11 +18,31 @@ var loadDefault = function(){
 	alert("Your defaults have been loaded");
 };// End Load default data from json.js
 
+// Loops data a prints it to screen
+var dataLoop = function (source) {
+	for (var i=0; i<source.length; i++){
+		var key = source.key(i);
+		var value = source.getItem(key);
+		// Convert sting from local storage to object
+		var obj = JSON.parse(value);
+		console.log(obj.occasion);
+		$(	'<li>' +
+			'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+			'<h2>' + obj.occasion + '</h2>' +
+			'<p>' + obj.date + '</p>' +
+			'<p>' + obj.importance + '</p>' +
+			'<p>' + obj.notes + '</p></a>' +
+			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+			'</li>')
+		.appendTo('#recentMemList')
+		.slideDown()
+		;
+	}// End for loop
+};// End dataLoop
 
 
 // Home page load complete
 $("#home").on("pageinit", function(){
-
 });// End Home page script
 
 
@@ -50,76 +70,73 @@ $("#addItem").on("pageinit", function(){
 		localStorage.setItem(id, JSON.stringify(memory));
 		alert("Your memory is safe!!");
 	});// End Save Memory to Local Storage
-
 });// End Add Item page script
 
 
 // Recent Mem page load complete
 $("#recentMem").on("pageinit", function(){
 
+	// Loading default data
+	if(localStorage.length === 0){
+		alert('There are no memories to display');
+		loadDefault();
+			// Load from local storage
+			dataLoop(localStorage);
+		}
+
 	// Load Data Function
 	$("#loadLocal").on("click", function loadData(){
 		if(localStorage.length === 0){
 			console.log('The local storage is equal to 0');
 			alert("There are no memories to display");
-			loadDefault();
+			// loadDefault();
 		}else{
 			// Load from local storage
 			console.log(localStorage.length);
 			for (var i=0; i<localStorage.length; i++){
-			$('<li><a href="#addItem" data-transition="slide" data-icon="edit">test</li>')
-				.appendTo('#recentMemList')
-				.slideDown()
-			;
+				var key = localStorage.key(i);
+				var value = localStorage.getItem(key);
+				// Convert sting from local storage to object
+				var obj = JSON.parse(value);
+				console.log(obj.occasion);
+				$(	'<li>' +
+						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+							'<h2>' + obj.occasion + '</h2>' +
+							'<p>' + obj.date + '</p>' +
+							'<p>' + obj.importance + '</p>' +
+							'<p>' + obj.notes + '</p></a>' +
+	        			'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' + 
+	        		'</li>')
+					.appendTo('#recentMemList')
+					.slideDown()
+				;
 			}
-
-
-	// 		var makeDiv = document.createElement("div");
-	// 		makeDiv.setAttribute("id", "memories");
-	// 		var makeList = document.createElement("ul");
-	// 		makeDiv.appendChild(makeList);
-	// 		document.body.appendChild(makeDiv);
-	// 		$("memories").style.display = "block";
-	// 		for (var i=0; i<localStorage.length; i++){
-	// 			var makeLi = document.createElement("li");
-	// 			var linksLi = document.createElement("li");
-	// 			makeList.appendChild(makeLi);
-	// 			var key = localStorage.key(i);
-	// 			var value = localStorage.getItem(key);
-	// 			// Convert sting from local storage to object
-	// 			var obj = JSON.parse(value);
-	// 			// Creating another list for each memory
-	// 			var makeSubList = document.createElement("ul");
-	// 			makeLi.appendChild(makeSubList);
-	// 			loadImg(makeSubList, obj.eventMood[1]);
-	// 			for (var n in obj){
-	// 				var makeSubLi = document.createElement("li");
-	// 				makeSubList.appendChild(makeSubLi);
-	// 				var optSubText = obj[n][0]+" "+obj[n][1];
-	// 				makeSubLi.innerHTML = optSubText;
-	// 				makeSubList.appendChild(linksLi);
-	// 			}
-	// 			makeItemLinks(localStorage.key(i), linksLi);
-	//		}
 		}
-});
+	});
 
 	// Load JSON
 	$("#loadJSON").on("click", function(){
 		$.ajax({
-			url:"xhr/data.json",
+			url:"data.json",
 			type:"GET",
 			dataType:"json",
 			success:function(data) {
 				console.log(data);
-				for(var x in data){
-					console.log(x);
-					$.each(data, function(i, memory){
-						$('#recentMemList').append(
-							$('<ul>')
-						);
-					});
-				}
+				$.each(data, function(i, memory){
+					console.log(memory);
+					console.log(memory.occasion);
+					$(	'<li>' +
+						'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+						'<h2>' + memory.occasion + '</h2>' +
+						'<p>Date: ' + memory.date + '</p>' +
+						'<p>Important: ' + memory.importance + '</p>' +
+						'<p>Notes: ' + memory.notes + '</p></a>' +
+						'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+						'</li>')
+						.appendTo('#recentMemList')
+						.slideDown()
+					;
+				});
 			},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
@@ -130,17 +147,43 @@ $("#recentMem").on("pageinit", function(){
 	// Load XML
 	$("#loadXML").on("click", function(){
 		$.ajax({
-			url:"xhr/data.xml",
+			url:"data.xml",
 			type:"GET",
 			dataType:"xml",
 			success:function(data, status) {
 				console.log(status, data);
 				$.parseXML(data);
+				console.log(data);
+				$.each(data, function(i, memory){
+					console.log(memory);
+					console.log(memory.occasion);
+					// $(	'<li>' +
+					// 	'<a href="#addItem" data-transition="slide" data-icon="edit">' +
+					// 	'<h2>' + memory.occasion + '</h2>' +
+					// 	'<p>Date: ' + memory.date + '</p>' +
+					// 	'<p>Important: ' + memory.importance + '</p>' +
+					// 	'<p>Notes: ' + memory.notes + '</p></a>' +
+					// 	'<a href="#deleteMem" data-rel="popup" data-position-to="window" data-transition="pop">Delete Memory</a>' +
+					// 	'</li>')
+					// 	.appendTo('#recentMemList')
+					// 	.slideDown()
+					// ;
+				});
 			},
 			error: function(error, parseerror) {
 				console.log(error, parseerror);
 			}
 		});
+	});
+
+
+	// Edit individual memory
+
+
+	// Delete individual memory
+	$('#popDelete').on('click', function(){
+		localStorage.removeItem(this.key);
+		alert('Memory has been forgotten');
 	});
 
 	// Clear local storage
@@ -158,12 +201,6 @@ $("#recentMem").on("pageinit", function(){
 			}
 		}
 	});// End Clear local storage
-
-	// Edit individual memory
-
-	// Delete individual memory
-
-	loadDefault();
 
 });// End Recent Mem page script
 
