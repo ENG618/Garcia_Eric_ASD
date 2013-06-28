@@ -40,6 +40,15 @@ var dataLoop = function (source) {
 	}// End for loop
 };// End dataLoop
 
+// CouchDB Code
+ $(document).on('pageniit', '#recentMem', function(){
+	$.couch.db("memory-vault").view("app/maps", {
+		success: function(date){
+			console.log(data);
+		}
+	});
+ });
+
 
 // Home page load complete
 $("#home").on("pageinit", function(){
@@ -206,9 +215,6 @@ $("#recentMem").on("pageinit", function(){
 
 
 
-
-// Needed Functions:...
-
-// Load image for category selected
-
-
+$(document).on('pageinit', '#home', function(){
+   // CouchDB Code
+});
