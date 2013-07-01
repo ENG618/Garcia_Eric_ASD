@@ -41,12 +41,52 @@ var dataLoop = function (source) {
 };// End dataLoop
 
 // CouchDB Code
- $(document).on('pageniit', '#recentMem', function(){
+ $(document).on('pageniit', '#home', function(){
 	$.couch.db("memory-vault").view("app/maps", {
 		success: function(date){
 			console.log(data);
 		}
 	});
+ });
+
+// Save
+ $.couch.db('memory-vault').saveDoc(memory, {
+	success: function(){
+		var id;
+		if(!key){
+			id = Math.floor(Math.random()*123456789);
+		}else{
+			id=key;
+		}
+		console.log(id);
+		var memory = {};
+		memory.occasion = ["Occasion: ", $("#occasion").val()];
+		memory.date = ["Date: ", $("#date").val()];
+		memory.importance = ["Importance: ", $("#importance").val()];
+		// memory.mood = ["Mood: ", $("#mood"), $("#mood").val()];
+		// memory.sharedWithd = ["Shared With: ", getCheckedValues()];
+		memory.notes = ["Notes: ", $("#notes").val()];
+		// Save data to local Storage
+		localStorage.setItem(id, JSON.stringify(memory));
+		alert("Your memory is safe!!");
+	}
+ });
+
+ // Delete
+  $.couch.db('memory-vault').removeDoc({
+	_id: id
+	_rev: rev},
+	{
+  	success: function(data){
+  		alert('Memory has been forgotten');
+  	}
+  });
+
+  });// View
+ $.couch.db('memory-vault').view(memory-vault/memory, {
+	success: function(){
+		dataLoop();
+	}
  });
 
 
@@ -213,8 +253,3 @@ $("#recentMem").on("pageinit", function(){
 
 });// End Recent Mem page script
 
-
-
-$(document).on('pageinit', '#home', function(){
-   // CouchDB Code
-});
